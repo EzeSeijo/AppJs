@@ -1,0 +1,35 @@
+/*OJOS*/
+#avatarEyesPrimary{
+	background-image:url("../asset2-transparente.png");
+	background-size:300vw, 300vw;
+	background-position:0vw -282vw;
+	background-repeat: no-repeat;
+}
+
+#avatarEyesClose{
+	background-image:url("../asset2-transparente.png");
+	background-size:300vw, 300vw;
+	background-position:-25vw -282vw;
+	background-repeat: no-repeat;
+}
+
+#avatarEyesSad{
+
+}
+
+#avatarEyesAngry{
+
+}
+
+/*BOCA*/
+#avatarMouthOpen{
+
+}
+
+#avatarMouthSad{
+
+}
+
+#avatarMouthAngry{
+
+}
