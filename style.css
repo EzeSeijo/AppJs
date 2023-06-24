@@ -1,0 +1,391 @@
+/*VARIABLES*/
+:root {
+  --pivotPointX: 50%; /*Coordenada x de pivot point de .avatarHead*/
+  --pivotPointY: 50%; /*Coordenada y de pivot point de .avatarHead*/  
+}
+/*RESET*/
+body{
+	margin:0;
+	font-family:arial;
+	font-size:6vw;
+}
+
+/*GENERAL*/
+a, a.active, a.hover{
+
+text-decoration:none;
+}
+fieldset{
+	position:relative;
+	padding:0 0 7vw 0;	
+}
+
+fieldset legend{
+	color:white;
+	font-size:5vw;
+}
+
+
+#cont{
+	background-color:red;
+	width:100%;
+	height:100vh;
+}
+
+/*RANGE*/
+
+.slider {
+	-webkit-appearance: none;
+	width: 100%;
+	height: 10px;
+	background-image:url("barrita.jpg");
+	position:absolute;	
+}
+
+.slider:focus{
+-webkit-box-shadow: none;
+}
+
+.slider::-webkit-slider-thumb{
+  -webkit-appearance: none; 
+  appearance: none;
+  width: 5vw;
+  height: 5vw;
+  background-image:url("item2.png");
+  background-size:3vw 5vw;
+  background-repeat:no-repeat;
+  cursor: pointer;
+
+}
+
+.slider::-moz-range-thumb {
+  -moz-appearance: none;
+  width: 10px;
+  height: 25px;
+  background: #4CAF50;
+  background-image:url("item2.png");
+  background-repeat:no-repeat; 
+  cursor: pointer;
+  z-index:4;
+}
+
+/*CONTROLS*/
+#playArea{
+	background-color:lime;
+	width:80%;
+	height:90vh;
+	position:relative;
+	display:inline-block;
+	left:0;
+	bottom:0vw;
+	background-size:cover;
+	background-position: 0, 0;
+	z-index:2;
+	}
+
+#controlsArea{
+	background-color:yellow;
+	width:20vw;
+	height:90vh;
+	position:relative;
+	display:inline-block;
+	left:0;
+	bottom:0vw;
+	z-index:2;
+	
+	overflow:scroll;
+}
+
+.navigationArea{
+	background-color:cyan;
+	position:absolute;
+	right:0;
+	bottom:0;
+	width:100%;
+	height:10vh;
+	padding:4vw 0 0vw 0;
+	z-index:3;
+}
+
+.generateAvatar{ /*boton "terminar"*/
+	position:absolute;
+	right:0;	
+	bottom:2vh;
+	background-color:blue;
+	color:white;
+	font-weight:bold;
+	padding:3vw;
+	border-radius:3vw;		
+}
+
+.buttonOptions{
+	background-color:gray;
+	width:20vw;
+	height:20vw;
+	border:thin solid yellow;
+	
+	position:relative;
+/*display:inline-block;	*/
+}
+.buttonOptions:hover{
+	background-color:red;
+}
+
+#buttonOption1{
+	background-image:url("btn.body.jpg");
+	background-position:center;
+	background-repeat:no-repeat;
+	background-size:cover;
+}
+#buttonOption2{
+	background-image:url("btn.head.jpg");
+	background-position:center;
+	background-repeat:no-repeat;
+	background-size:cover;
+}
+#buttonOption3{
+	background-image:url("btn.eyes.jpg");
+	background-position:center;
+	background-repeat:no-repeat;
+	background-size:cover;
+}
+#buttonOption4{
+	background-image:url("btn.mouth.jpg");
+	background-position:center;
+	background-repeat:no-repeat;
+	background-size:cover;
+}
+#buttonOption5{
+	background-image:url("btn.horns.jpg");
+	background-position:center;
+	background-repeat:no-repeat;
+	background-size:cover;
+}
+#buttonOption6{
+	background-image:url("btn.wings.jpg");
+	background-position:center;
+	background-repeat:no-repeat;
+	background-size:cover;
+}
+.selectedOption{
+	display:none;
+	background-color:rgba(0, 0, 255, .5);
+	width:100%;
+	height:20vw;	
+}
+
+.optionsBox{
+	background-color:rgba(0, 0, 0, .8);
+	position:absolute;
+	right:0;
+	top:0;
+	border-radius:20px;
+	border:thick solid white;
+	width:100%;
+	height:60vw;
+	box-sizing: border-box;
+	padding:4vw;
+	z-index:3;	
+	
+	display:none;
+}
+
+.optionStyle{
+	position:relative;
+	display:inline-block;
+	border-radius:2vw;
+	border:medium dotted white;
+	width:15vw;
+	height:15vw;
+	box-sizing: border-box;
+	margin-right:2vw;
+	/*background-image en controls.js*/
+	background-size:120vw 106vw;
+	
+}
+.optionStyle:hover{
+	border:medium solid cyan;	
+}
+
+/*PERSONAJE*/
+
+.avatarSpace{
+background-image:url('textures/shadowAvatar.png');
+background-size:cover;
+/*background-position(bottom);*/
+	position:absolute;
+	bottom:0vh;
+	left:5vw;/* 40-30(mitad del playArea - mitad del avatarApace) */
+	width:70vw;
+	height:90vw;	
+	margin:0;
+	padding:0;
+	z-index:1;	
+}
+#avatarBody{
+	position:absolute;
+	bottom:10vw;
+	left:10vw;
+	width:50vw;
+	height:30vw;
+	background-image:url("avatar7.png");
+	background-size:600vw, 600vw;
+	background-position:0vw -91vw;
+	background-repeat: no-repeat;
+	z-index:2;
+}
+
+#avatarHead{
+	position:absolute;
+	bottom:10vw;
+	left:12vw;
+	width:50vw;
+	height:80vw;
+	background-image:url("avatar7.png");
+	background-size:600vw, 600vw;
+	background-position:0vw 1vw;
+	background-repeat: no-repeat;	
+	transform: rotate(0deg);
+	transform-origin: var(--pivotPointX) var(--pivotPointY); /*pivot point x, y coords*/
+	z-index:2;
+}
+
+.avatarEyes{
+	position:absolute;
+	bottom:35vw;
+	left:19vw;
+	width:25vw;
+	height:13vw;
+	z-index:3;
+}
+#avatarMouth{
+	position:absolute;
+	bottom:23vw;
+	left:19vw;
+	width:25vw;
+	height:14vw;
+	background-image:url("avatar7.png");
+	background-size:600vw, 600vw;
+	background-position:0vw -438vw;
+	background-repeat: no-repeat;
+	z-index:3;	
+}
+#avatarHorns{
+	position:absolute;
+	bottom:37vw;
+	left:1vw;
+	width:50vw;
+	height:45vw;
+	background-image:url("avatar7.png");
+	background-size:600vw, 600vw;
+	background-position:0vw -335vw;/*antes 0vw -247vw;*/
+	background-repeat: no-repeat;
+	z-index:3;
+}
+#avatarWings{
+	position:absolute;
+	bottom:15vw;
+	left:-20vw;
+	width:50vw;
+	height:42vw;
+	background-image:url("avatar7.png");
+	background-size:600vw, 600vw;
+	background-position:0vw -483vw;
+	background-repeat: no-repeat;
+	z-index:1;
+}
+
+/*MODO DESARROLLO*/
+/*#avatarBody, #avatarHead, #avatarEyes, #avatarHorns{/*modo desarrollo*/
+/*	border:thin solid cyan;
+}
+
+#avatarBody:hover, #avatarHead:hover, #avatarEyes:hover, #avatarHorns:hover{/*modo desarrollo*/
+/*	border:thin solid red;
+}
+.pivotPoint{ /*modo desarrollo*/
+/*	position:absolute;
+	left:var(--pivotPointX);
+	top:var(--pivotPointY);
+	width:1vw;
+	height:1vw;
+	border:1vw solid orange;
+}
+
+
+
+/*PORTRAIT*/
+@media only screen and (orientation: landscape){
+	body{
+		margin:0;		
+		font-size:3vw;
+	}
+
+	.avatarSpace{
+		position:absolute;
+		bottom:0vw;
+		left:5vw;/* 40-30(mitad del playArea - mitad del avatarApace) */
+		width:70vw;
+		height:90vw;		
+		margin:0;
+		padding:0;
+		z-index:1;
+		
+	}
+	.optionsBox{
+		height:25vw;
+		padding:2vw;
+	}
+	.optionStyle{
+		position:relative;
+		display:inline-block;
+		border-radius:2vw;
+		width:10vw;
+		height:10vw;
+		margin-right:2vw;	
+		background-size:80vw 70vw;	
+	}
+	.navigationArea{
+		height:8vw;
+		padding:1vw 0 1vw 0;
+
+	}
+	#controlsArea{
+		width:21vw;
+		height:90vh;		
+		overflow:hidden;
+	}
+	fieldset{
+		padding:0 0 4vw 0;
+		
+	}
+	fieldset legend{
+		font-size:3vw;
+	}
+	#playArea{
+		width:79vw;
+	}	
+	.generateAvatar{ /*boton "terminar"*/
+		padding:2vw;
+		border-radius:1vw;
+			
+	}
+	.buttonOptions{
+		background-color:gray;
+		width:10vw;
+		height:10vw;
+		/*border:thin solid yellow;	*/
+		
+		position:relative;
+		display:inline-block;
+		margin:0 0 -1vw 0;
+	}
+	.selectedOption{
+		display:none;
+		background-color:rgba(0, 0, 255, .5);
+		width:10vw;
+		height:10vw;
+		
+	}
+	
+}
